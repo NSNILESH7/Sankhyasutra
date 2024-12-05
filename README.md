@@ -1,5 +1,4 @@
-# Project Name
-
+# Sankhyasutra - AI Powered maths calculator
 
 ## Description  
 **AI-Powered Math Calculator** is an innovative web application that combines the power of artificial intelligence and modern web technologies to solve mathematical equations.  
