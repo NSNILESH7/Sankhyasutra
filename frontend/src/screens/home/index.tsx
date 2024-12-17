@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Draggable from "react-draggable";
-import { HexColorPicker } from "react-colorful";
+// import { HexColorPicker } from "react-colorful";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/ui/navbar";
 import Hero from "@/components/ui/HeroSection";
@@ -20,13 +20,13 @@ interface Response {
 export default function Home() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isDrawing, setIsDrawing] = useState(false);
-  const [color, setColor] = useState("#ffffff");
+  // const [color, setColor] = useState("#ffffff");
   const [reset, setReset] = useState(false);
   const [dictOfVars, setDictOfVars] = useState({});
   const [result, setResult] = useState<GeneratedResult>();
   const [latexPosition, setLatexPosition] = useState({ x: 10, y: 200 });
   const [latexExpression, setLatexExpression] = useState<Array<string>>([]);
-  const [showColorPicker, setShowColorPicker] = useState(false);
+  // const [showColorPicker, setShowColorPicker] = useState(false);
 
   useEffect(() => {
     if (latexExpression.length > 0 && window.MathJax) {
@@ -132,7 +132,7 @@ export default function Home() {
     if (canvas) {
       const ctx = canvas.getContext("2d");
       if (ctx) {
-        ctx.strokeStyle = color;
+        ctx.strokeStyle = "white";
         ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
         ctx.stroke();
       }
@@ -201,36 +201,36 @@ export default function Home() {
     }
   };
 
-  const colorPickerStyles = {
-    wrapper: "relative inline-block",
-    picker: "absolute top-10 z-50 shadow-lg rounded-lg p-2 bg-white",
-    button:
-      "h-8 w-8 rounded border border-gray-300 flex items-center justify-center cursor-pointer hover:border-gray-400 transition-colors",
-    backdrop: "fixed inset-0",
-  };
+  // const colorPickerStyles = {
+  //   wrapper: "relative inline-block",
+  //   picker: "absolute top-10 z-50 shadow-lg rounded-lg p-2 bg-white",
+  //   button:
+  //     "h-8 w-8 rounded border border-gray-300 flex items-center justify-center cursor-pointer hover:border-gray-400 transition-colors",
+  //   backdrop: "fixed inset-0",
+  // };
 
-  const ColorPickerButton = () => {
-    return (
-      <div className={colorPickerStyles.wrapper}>
-        <Button
-          onClick={() => setShowColorPicker(!showColorPicker)}
-          className={colorPickerStyles.button}
-          style={{ backgroundColor: color }}
-          title="Choose color"
-        />
+  // const ColorPickerButton = () => {
+  //   return (
+  //     <div className={colorPickerStyles.wrapper}>
+  //       <Button
+  //         onClick={() => setShowColorPicker(!showColorPicker)}
+  //         className={colorPickerStyles.button}
+  //         style={{ backgroundColor: color }}
+  //         title="Choose color"
+  //       />
 
-        {showColorPicker && (
-          <div className={colorPickerStyles.picker}>
-            <div
-              className={colorPickerStyles.backdrop}
-              onClick={() => setShowColorPicker(false)}
-            />
-            <HexColorPicker color={color} onChange={setColor} />
-          </div>
-        )}
-      </div>
-    );
-  };
+  //       {showColorPicker && (
+  //         <div className={colorPickerStyles.picker}>
+  //           <div
+  //             className={colorPickerStyles.backdrop}
+  //             onClick={() => setShowColorPicker(false)}
+  //           />
+  //           <HexColorPicker color={color} onChange={setColor} />
+  //         </div>
+  //       )}
+  //     </div>
+  //   );
+  // };
 
   return (
     <>
